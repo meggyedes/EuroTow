@@ -34,6 +34,7 @@
   justify-content: center;
   gap: 36px;
   flex-wrap: wrap;
+  margin-bottom: 50px;
 }
 
 /* --- Service Card --- */
@@ -44,24 +45,54 @@
   border: 1px solid var(--dark-border);
   border-top: 4px solid transparent;
   border-radius: var(--radius-xl);
-  padding: 48px 36px;
+  padding: 48px 36px 36px;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 24px;
-  min-height: 300px;
+  position: relative;
+  min-height: 450px;
   width: 100%;
-  max-width: 420px;
+  max-width: 450px;
   box-shadow: var(--shadow-md);
   transition: all var(--transition-normal);
+  cursor: pointer;
 }
 
 .services__card:hover {
   transform: translateY(-8px);
-  box-shadow: var(--shadow-lg), 0 0 25px rgba(212, 167, 58, 0.05);
+  box-shadow: var(--shadow-lg), 0 0 25px rgba(212, 167, 58, 0.06);
   border-top-color: var(--primary);
   border-color: rgba(212, 167, 58, 0.3);
+}
+
+.services__card--active {
+  border-color: var(--primary) !important;
+  border-top-color: var(--primary) !important;
+  background: rgba(26, 31, 53, 0.7);
+  box-shadow: var(--shadow-gold), 0 0 35px rgba(212, 167, 58, 0.1);
+}
+
+/* Click Hint */
+.services__card-click-hint {
+  position: absolute;
+  top: 18px;
+  right: 24px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--text-on-dark-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.6;
+  transition: opacity var(--transition-fast), color var(--transition-fast);
+}
+
+.services__card:hover .services__card-click-hint {
+  opacity: 1;
+  color: var(--primary-light);
 }
 
 /* --- Icon Wrapper --- */
@@ -74,17 +105,35 @@
   align-items: center;
   justify-content: center;
   color: var(--dark);
+  margin-bottom: 8px;
   flex-shrink: 0;
   box-shadow: var(--shadow-gold);
 }
 
 /* --- Card Title --- */
 .services__card-title {
-  font-size: 1.35rem;
+  font-size: 1.5rem;
   font-weight: 800;
   color: var(--light);
   letter-spacing: 0.04em;
   text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+/* Short Description */
+.services__card-short-desc {
+  font-size: 0.925rem;
+  color: var(--text-on-dark-muted);
+  line-height: 1.5;
+  margin-bottom: 12px;
+  max-width: 320px;
+}
+
+.services__card-divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, var(--dark-border) 50%, transparent 100%);
+  margin-bottom: 16px;
 }
 
 /* --- List --- */
@@ -94,14 +143,15 @@
   gap: 14px;
   width: 100%;
   text-align: left;
-  margin-top: 8px;
+  margin-bottom: 30px;
+  flex-grow: 1;
 }
 
 .services__list-item {
   display: flex;
   align-items: center;
   gap: 12px;
-  font-size: 1rem;
+  font-size: 0.95rem;
   color: var(--text-on-dark);
   line-height: 1.5;
 }
@@ -111,9 +161,234 @@
   flex-shrink: 0;
 }
 
+.services__card-action-btn {
+  width: 100%;
+  pointer-events: none; /* Let click bubble up to card container */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.services__arrow-icon {
+  transition: transform var(--transition-fast);
+}
+
+.services__card:hover .services__arrow-icon {
+  transform: translateX(4px);
+}
+
+/* ============================================================
+   Interactive Detailed Specifications Panel (Premium Glass)
+   ============================================================ */
+.services__details-panel {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 45px;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--dark-border);
+  position: relative;
+  animation: detailsFadeIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes detailsFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.services__details-close {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  color: var(--text-on-dark-muted);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid var(--dark-border);
+  background: rgba(255, 255, 255, 0.02);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.services__details-close:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--light);
+  border-color: var(--primary);
+  transform: rotate(90deg);
+}
+
+/* Panel Header */
+.services__details-header {
+  margin-bottom: 18px;
+}
+
+.services__details-badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: var(--primary-light);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: rgba(212, 167, 58, 0.1);
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(212, 167, 58, 0.2);
+  margin-bottom: 10px;
+}
+
+.services__details-title {
+  font-size: 1.85rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.services__details-intro {
+  font-size: 1rem;
+  color: var(--text-on-dark);
+  line-height: 1.7;
+  margin-bottom: 35px;
+  max-width: 850px;
+}
+
+/* Grid Layout */
+.services__details-content-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.services__details-section-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--light);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--dark-border);
+  padding-bottom: 10px;
+}
+
+/* Left Column: Features Card Feed */
+.services__details-features-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.services__details-feature-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  padding: 18px 20px;
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+}
+
+.services__details-feature-card:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(212, 167, 58, 0.15);
+}
+
+.services__details-feature-card h5 {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--primary-light);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.services__details-feature-card p {
+  font-size: 0.875rem;
+  color: var(--text-on-dark-muted);
+  line-height: 1.5;
+}
+
+/* Right Column: Ordered Checklist */
+.services__details-check-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 30px;
+}
+
+.services__details-check-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.services__details-check-number {
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  border-radius: 50%;
+  background: var(--gold-gradient);
+  color: var(--dark);
+  font-size: 0.85rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: var(--shadow-sm);
+}
+
+.services__details-check-item p {
+  font-size: 0.925rem;
+  color: var(--text-on-dark);
+  line-height: 1.5;
+}
+
+/* Emergency Call Widget */
+.services__details-call-box {
+  background: rgba(212, 167, 58, 0.05);
+  border: 1px solid rgba(212, 167, 58, 0.15);
+  padding: 20px 24px;
+  border-radius: var(--radius-md);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.services__details-call-box p {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-on-dark-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.services__details-call-btn {
+  width: 100%;
+}
+
 /* ============================================
    Responsive
    ============================================ */
+@media (max-width: 968px) {
+  .services__details-content-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .services__details-panel {
+    padding: 30px 20px;
+  }
+}
 
 @media (max-width: 640px) {
   .services__grid {
@@ -123,5 +398,6 @@
   .services__card {
     padding: 36px 24px;
     max-width: 100%;
+    min-height: auto;
   }
 }
