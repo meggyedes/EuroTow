@@ -285,3 +285,10 @@ input, textarea, select {
     transform: translateY(0);
   }
 }
+
+/* Disable scroll-animate hidden state on subpages to ensure 100% visibility */
+.page-fade-in .scroll-animate {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}

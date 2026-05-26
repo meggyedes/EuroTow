@@ -46,7 +46,7 @@ function App() {
           <Route 
             path="/" 
             element={
-              <div className="page-fade-in">
+              <div className="home-page">
                 <Hero />
                 <WhyUs />
                 <QuickDelivery />
