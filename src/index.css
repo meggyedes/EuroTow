@@ -82,8 +82,8 @@ body {
   font-family: var(--font-family);
   font-size: 16px;
   line-height: 1.6;
-  color: var(--text);
-  background-color: var(--light);
+  color: var(--text-on-dark);
+  background-color: var(--dark);
   overflow-x: hidden;
 }
 

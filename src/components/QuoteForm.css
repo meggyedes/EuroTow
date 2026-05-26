@@ -1,10 +1,31 @@
 /* ============================================
-   QuoteForm / Contact Section
+   QuoteForm / Contact Szekció — Premium Gold & Dark
    ============================================ */
 
 .quote-form {
   padding: var(--section-padding);
-  background-color: var(--light);
+  background-color: var(--dark-lighter);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background decorator glow */
+.quote-form::before {
+  content: '';
+  position: absolute;
+  bottom: -20%;
+  left: -10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(212, 167, 58, 0.03) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.quote-form .container {
+  position: relative;
+  z-index: 2;
+  margin-top: 50px; /* space for navbar on subpages */
 }
 
 /* --- Grid Layout --- */
@@ -21,7 +42,7 @@
 }
 
 .quote-form__title {
-  font-size: 2.25rem;
+  font-size: 2.5rem;
   font-weight: 800;
   letter-spacing: -0.02em;
   margin-bottom: 16px;
@@ -29,8 +50,8 @@
 }
 
 .quote-form__subtitle {
-  font-size: 1.1rem;
-  color: var(--text-light);
+  font-size: 1.125rem;
+  color: var(--text-on-dark-muted);
   line-height: 1.7;
   margin-bottom: 40px;
 }
@@ -57,7 +78,8 @@
   min-width: 48px;
   border-radius: var(--radius-md);
   background: rgba(212, 167, 58, 0.1);
-  color: var(--primary);
+  color: var(--primary-light);
+  border: 1px solid rgba(212, 167, 58, 0.15);
   transition: all var(--transition-normal);
 }
 
@@ -68,18 +90,20 @@
 }
 
 .quote-form__contact-text {
-  font-size: 1.05rem;
-  color: var(--text);
+  font-size: 1.1rem;
+  color: var(--text-on-dark);
   font-weight: 500;
 }
 
 /* --- Right: Form Card --- */
 .quote-form__card {
-  background: var(--light);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-lg);
+  background: rgba(26, 31, 53, 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: var(--radius-xl);
   padding: 40px 36px;
-  border: 1px solid var(--light-border);
+  border: 1px solid var(--dark-border);
+  box-shadow: var(--shadow-lg);
 }
 
 /* --- Form --- */
@@ -100,7 +124,7 @@
   left: 16px;
   top: 50%;
   transform: translateY(-50%);
-  color: var(--text-lighter);
+  color: var(--text-on-dark-muted);
   display: flex;
   align-items: center;
   pointer-events: none;
@@ -117,27 +141,28 @@
 .quote-form__input {
   width: 100%;
   padding: 14px 16px 14px 48px;
-  border: 1.5px solid var(--light-border);
+  border: 1.5px solid var(--dark-border);
   border-radius: var(--radius-md);
   font-size: 1rem;
-  color: var(--text);
-  background: var(--light);
+  color: var(--light);
+  background: rgba(10, 14, 26, 0.4);
   outline: none;
-  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  transition: all var(--transition-fast);
 }
 
 .quote-form__input::placeholder {
-  color: var(--text-lighter);
+  color: var(--text-on-dark-muted);
 }
 
 .quote-form__input:focus {
   border-color: var(--primary);
+  background: rgba(10, 14, 26, 0.6);
   box-shadow: 0 0 0 3px rgba(212, 167, 58, 0.15);
 }
 
 .quote-form__input:focus + .quote-form__input-icon,
 .quote-form__field:focus-within .quote-form__input-icon {
-  color: var(--primary);
+  color: var(--primary-light);
 }
 
 .quote-form__textarea {
@@ -147,14 +172,14 @@
 
 /* --- Error State --- */
 .quote-form__field--error .quote-form__input {
-  border-color: #e74c3c;
-  box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
+  border-color: #EF4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
 }
 
 .quote-form__error {
   display: block;
   font-size: 0.813rem;
-  color: #e74c3c;
+  color: #EF4444;
   margin-top: 6px;
   padding-left: 4px;
 }
@@ -163,7 +188,7 @@
 .quote-form__success {
   background: rgba(34, 197, 94, 0.08);
   border: 1px solid rgba(34, 197, 94, 0.3);
-  color: #16a34a;
+  color: #22C55E;
   padding: 14px 18px;
   border-radius: var(--radius-md);
   font-size: 0.938rem;

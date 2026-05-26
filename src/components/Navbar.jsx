@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, useLocation } from 'react-router-dom';
 import { Truck, Menu, X, Phone } from 'lucide-react';
 import './Navbar.css';
 
@@ -15,11 +15,14 @@ const NAV_LINKS = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { pathname } = useLocation();
 
-  // --- Scroll detection: toggle 'scrolled' class ---
+  const isHome = pathname === '/';
+
+  // --- Scroll detection ---
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      setScrolled(window.scrollY > 30);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -38,8 +41,11 @@ export default function Navbar() {
   const toggleMobile = () => setMobileOpen((prev) => !prev);
   const closeMobile = () => setMobileOpen(false);
 
+  // Apply "scrolled" (glassy backdrop) state if page is scrolled OR if we are on a subpage
+  const showGlassyBacking = scrolled || !isHome;
+
   return (
-    <nav className={`navbar${scrolled ? ' scrolled' : ''}`}>
+    <nav className={`navbar${showGlassyBacking ? ' scrolled' : ''}`}>
       <div className="navbar__container">
         {/* Logo Link to Home */}
         <Link
