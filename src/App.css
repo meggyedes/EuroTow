@@ -1,0 +1,5 @@
+/* App-level styles - minimal, most styles are in index.css and component CSS files */
+
+main {
+  overflow-x: hidden;
+}

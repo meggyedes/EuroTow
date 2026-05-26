@@ -1,0 +1,256 @@
+/* ============================================
+   Equipment Szekció — Premium Gold & Dark Theme
+   ============================================ */
+
+.equipment {
+  padding: var(--section-padding);
+  background-color: var(--dark-lighter);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background decorator glow */
+.equipment::before {
+  content: '';
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(212, 167, 58, 0.02) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.equipment .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* --- Equipment Cards Grid --- */
+.equipment__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  margin-bottom: 50px;
+}
+
+.equipment__card {
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--dark-border);
+  padding: 35px;
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition-normal);
+  background: rgba(26, 31, 53, 0.45);
+}
+
+.equipment__card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(212, 167, 58, 0.35);
+  box-shadow: var(--shadow-lg), 0 0 25px rgba(212, 167, 58, 0.05);
+}
+
+/* Header */
+.equipment__header {
+  margin-bottom: 24px;
+}
+
+.equipment__tag {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: var(--primary-light);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: rgba(212, 167, 58, 0.1);
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(212, 167, 58, 0.2);
+  margin-bottom: 12px;
+}
+
+.equipment__title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--light);
+  margin-bottom: 6px;
+}
+
+.equipment__subtitle {
+  font-size: 0.875rem;
+  color: var(--text-on-dark-muted);
+  font-weight: 500;
+}
+
+/* Image Box */
+.equipment__image-box {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 28px;
+  border: 1px solid var(--dark-border);
+}
+
+.equipment__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.equipment__card:hover .equipment__image {
+  transform: scale(1.03);
+}
+
+.equipment__image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 50%, rgba(10, 14, 26, 0.7) 100%);
+  z-index: 2;
+}
+
+/* Specs List */
+.equipment__specs {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.equipment__spec-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  padding: 16px 20px;
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+}
+
+.equipment__spec-item:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(212, 167, 58, 0.15);
+}
+
+.equipment__spec-icon-wrapper {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  background: rgba(212, 167, 58, 0.08);
+  border: 1px solid rgba(212, 167, 58, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.equipment__spec-details {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.equipment__spec-label {
+  font-size: 0.75rem;
+  color: var(--text-on-dark-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+.equipment__spec-value {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--light);
+}
+
+.font-gold {
+  color: var(--primary-light) !important;
+}
+
+/* --- Safety Banner --- */
+.equipment__safety-banner {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 30px 40px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--dark-border);
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+.equipment__safety-icon-box {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgba(212, 167, 58, 0.1);
+  border: 1px solid rgba(212, 167, 58, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  animation: truckBounce 3s ease-in-out infinite;
+}
+
+@keyframes truckBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+.equipment__safety-content h4 {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--light);
+  letter-spacing: 0.06em;
+  margin-bottom: 6px;
+}
+
+.equipment__safety-content p {
+  font-size: 0.9rem;
+  color: var(--text-on-dark-muted);
+  line-height: 1.6;
+}
+
+.equipment__safety-content strong {
+  color: var(--primary-light);
+}
+
+/* ==========================================
+   Responsive
+   ========================================== */
+@media (max-width: 900px) {
+  .equipment__grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .equipment__safety-banner {
+    flex-direction: column;
+    text-align: center;
+    padding: 30px 20px;
+    gap: 16px;
+  }
+
+  .equipment__safety-icon-box {
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .equipment__card {
+    padding: 25px 20px;
+  }
+
+  .equipment__title {
+    font-size: 1.4rem;
+  }
+
+  .equipment__spec-value {
+    font-size: 0.95rem;
+  }
+}

@@ -1,0 +1,497 @@
+/* ============================================
+   Prices Szekció — Premium Gold & Dark Theme
+   ============================================ */
+
+.prices {
+  padding: var(--section-padding);
+  background-color: var(--dark-lighter);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorator glow for Prices section */
+.prices::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(212, 167, 58, 0.04) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.prices .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* --- Pricing Cards Grid --- */
+.prices__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-bottom: 70px;
+}
+
+.prices__card {
+  background: rgba(26, 31, 53, 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--dark-border);
+  border-radius: var(--radius-lg);
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: all var(--transition-normal);
+}
+
+.prices__card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(212, 167, 58, 0.4);
+  box-shadow: var(--shadow-lg), 0 0 25px rgba(212, 167, 58, 0.05);
+}
+
+.prices__card--popular {
+  background: rgba(26, 31, 53, 0.65);
+  border: 2px solid var(--primary);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+}
+
+.prices__card--popular:hover {
+  border-color: var(--primary-light);
+  box-shadow: var(--shadow-gold), 0 10px 45px rgba(0, 0, 0, 0.3);
+}
+
+/* Card Badges */
+.prices__card-badge {
+  position: absolute;
+  top: -14px;
+  left: 30px;
+  background: var(--gold-gradient);
+  color: var(--dark);
+  padding: 6px 16px;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  box-shadow: var(--shadow-gold);
+}
+
+.prices__card-badge--secondary {
+  background: var(--dark-border);
+  color: var(--primary-light);
+  border: 1px solid rgba(212, 167, 58, 0.2);
+  box-shadow: none;
+}
+
+/* Content Elements */
+.prices__card-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--light);
+  margin-bottom: 8px;
+  letter-spacing: -0.01em;
+}
+
+.prices__card-subtitle {
+  font-size: 0.875rem;
+  color: var(--text-on-dark-muted);
+  margin-bottom: 24px;
+}
+
+.prices__card-price-wrapper {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 28px;
+}
+
+.prices__card-price {
+  font-size: 3rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.prices__card-unit {
+  font-size: 1.125rem;
+  color: var(--text-on-dark-muted);
+  font-weight: 600;
+}
+
+.prices__card-divider {
+  height: 1px;
+  background: linear-gradient(90deg, rgba(42, 48, 80, 1) 0%, rgba(42, 48, 80, 0.2) 100%);
+  margin-bottom: 28px;
+}
+
+.prices__card-features {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 40px;
+  flex-grow: 1;
+}
+
+.prices__card-feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.prices__card-feature-bullet {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--primary);
+  margin-top: 10px;
+  flex-shrink: 0;
+}
+
+.prices__card-feature-text {
+  font-size: 0.925rem;
+  color: var(--text-on-dark);
+  line-height: 1.5;
+}
+
+.prices__card-btn {
+  width: 100%;
+}
+
+/* --- Interactive Calculator --- */
+.prices__calculator-wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.prices__calculator {
+  padding: 45px;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--dark-border);
+}
+
+.prices__calculator-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+
+.prices__calculator-icon {
+  animation: calcRotate 4s ease-in-out infinite;
+}
+
+@keyframes calcRotate {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(15deg); }
+}
+
+.prices__calculator-title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--light);
+}
+
+.prices__calculator-desc {
+  font-size: 0.95rem;
+  color: var(--text-on-dark-muted);
+  margin-bottom: 35px;
+  max-width: 650px;
+}
+
+.prices__calculator-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 40px;
+  align-items: center;
+}
+
+/* Controls Column */
+.prices__calculator-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.prices__calc-field {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.prices__calc-label {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--light);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Radio Group */
+.prices__radio-group {
+  display: flex;
+  gap: 12px;
+}
+
+.prices__radio-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--dark-border);
+  border-radius: var(--radius-md);
+  color: var(--text-on-dark-muted);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.prices__radio-btn input {
+  display: none;
+}
+
+.prices__radio-btn:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(212, 167, 58, 0.3);
+  color: var(--light);
+}
+
+.prices__radio-btn.active {
+  background: rgba(212, 167, 58, 0.1);
+  border-color: var(--primary);
+  color: var(--primary-light);
+}
+
+/* Slider Controls */
+.prices__calc-label-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.prices__calc-value {
+  font-size: 1.125rem;
+  font-weight: 800;
+}
+
+/* Custom Range Slider */
+.prices__range-slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: var(--radius-full);
+  background: var(--dark-border);
+  outline: none;
+  cursor: pointer;
+}
+
+.prices__range-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--gold-gradient);
+  box-shadow: var(--shadow-gold);
+  border: 2px solid var(--dark);
+  transition: transform var(--transition-fast);
+}
+
+.prices__range-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+.prices__range-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: var(--text-on-dark-muted);
+  margin-top: 4px;
+}
+
+/* Custom Checkbox */
+.prices__calc-field--checkbox {
+  margin-top: 6px;
+}
+
+.prices__checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.95rem;
+  color: var(--text-on-dark);
+  cursor: pointer;
+  user-select: none;
+}
+
+.prices__checkbox-label input {
+  display: none;
+}
+
+.prices__checkbox-custom {
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  border: 1px solid var(--dark-border);
+  background: rgba(255, 255, 255, 0.03);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: all var(--transition-fast);
+}
+
+.prices__checkbox-label:hover .prices__checkbox-custom {
+  border-color: var(--primary);
+  background: rgba(212, 167, 58, 0.05);
+}
+
+.prices__checkbox-label input:checked + .prices__checkbox-custom {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+.prices__checkbox-label input:checked + .prices__checkbox-custom::after {
+  content: '';
+  width: 6px;
+  height: 10px;
+  border: solid var(--dark);
+  border-width: 0 2.5px 2.5px 0;
+  transform: rotate(45deg);
+  position: absolute;
+  top: 2px;
+  left: 6px;
+}
+
+/* Result Card */
+.prices__calculator-result {
+  height: 100%;
+}
+
+.prices__result-card {
+  height: 100%;
+  background: rgba(10, 14, 26, 0.4);
+  border: 1px solid var(--dark-border);
+  border-radius: var(--radius-lg);
+  padding: 35px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.prices__result-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-on-dark-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 8px;
+}
+
+.prices__result-price-box {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.prices__result-price {
+  font-size: 3.5rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.prices__result-currency {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--light);
+}
+
+.prices__result-note {
+  font-size: 0.8rem;
+  color: var(--text-on-dark-muted);
+  line-height: 1.5;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 6px;
+  margin-bottom: 28px;
+  max-width: 250px;
+}
+
+.prices__result-note svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--primary-light);
+}
+
+.prices__result-btn {
+  width: 100%;
+}
+
+/* ==========================================
+   Responsive
+   ========================================== */
+@media (max-width: 1024px) {
+  .prices__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .prices__card:last-child {
+    grid-column: span 2;
+    max-width: 500px;
+    margin: 0 auto;
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .prices__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .prices__card:last-child {
+    grid-column: span 1;
+    margin: 0;
+  }
+
+  .prices__calculator {
+    padding: 30px 20px;
+  }
+
+  .prices__calculator-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .prices__radio-group {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .prices__card {
+    padding: 30px 20px;
+  }
+
+  .prices__card-price {
+    font-size: 2.5rem;
+  }
+
+  .prices__calculator-title {
+    font-size: 1.4rem;
+  }
+
+  .prices__result-price {
+    font-size: 2.8rem;
+  }
+}

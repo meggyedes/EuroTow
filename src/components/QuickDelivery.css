@@ -1,0 +1,187 @@
+/* ============================================
+   QuickDelivery — Gyorsmentő-Szállítás
+   ============================================ */
+
+.quick-delivery {
+  padding: var(--section-padding);
+  background: var(--dark-gradient);
+  color: var(--text-on-dark);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative ambient glow */
+.quick-delivery::before {
+  content: '';
+  position: absolute;
+  bottom: -30%;
+  left: -10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(212, 167, 58, 0.06) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* --- Wrapper (Split Layout) --- */
+.quick-delivery__wrapper {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+}
+
+/* --- Image Column (60%) --- */
+.quick-delivery__image-col {
+  flex: 0 0 58%;
+  max-width: 58%;
+}
+
+.quick-delivery__image-wrapper {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-xl);
+}
+
+/* Subtle gold border accent on image */
+.quick-delivery__image-wrapper::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(212, 167, 58, 0.15);
+  pointer-events: none;
+}
+
+.quick-delivery__image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-lg);
+  transition: transform var(--transition-slow);
+}
+
+.quick-delivery__image-wrapper:hover .quick-delivery__image {
+  transform: scale(1.03);
+}
+
+/* --- Content Column (40%) --- */
+.quick-delivery__content-col {
+  flex: 1;
+  min-width: 0;
+}
+
+/* --- Badge --- */
+.quick-delivery__badge {
+  display: inline-block;
+  padding: 6px 18px;
+  background: rgba(212, 167, 58, 0.12);
+  border: 1px solid rgba(212, 167, 58, 0.3);
+  border-radius: var(--radius-full);
+  color: var(--primary-light);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+/* --- Title --- */
+.quick-delivery__title {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: var(--light);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+/* --- Description --- */
+.quick-delivery__description {
+  font-size: 1.05rem;
+  color: var(--text-on-dark-muted);
+  line-height: 1.8;
+  margin-bottom: 32px;
+}
+
+/* --- Feature List --- */
+.quick-delivery__features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.quick-delivery__feature-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-on-dark);
+}
+
+.quick-delivery__feature-icon {
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+/* --- CTA Button --- */
+.quick-delivery__cta {
+  margin-top: 4px;
+}
+
+/* ============================================
+   Responsive
+   ============================================ */
+
+/* Tablet / smaller desktops */
+@media (max-width: 992px) {
+  .quick-delivery__wrapper {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .quick-delivery__image-col {
+    flex: none;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .quick-delivery__content-col {
+    text-align: left;
+  }
+
+  .quick-delivery__title {
+    font-size: 2rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+  .quick-delivery__title {
+    font-size: 1.625rem;
+  }
+
+  .quick-delivery__description {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+
+  .quick-delivery__features {
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+
+  .quick-delivery__feature-item {
+    font-size: 0.9rem;
+  }
+
+  .quick-delivery__badge {
+    font-size: 0.7rem;
+    padding: 5px 14px;
+  }
+}

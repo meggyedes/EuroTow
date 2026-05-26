@@ -1,0 +1,250 @@
+/* ============================================
+   QuoteForm / Contact Section
+   ============================================ */
+
+.quote-form {
+  padding: var(--section-padding);
+  background-color: var(--light);
+}
+
+/* --- Grid Layout --- */
+.quote-form__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+/* --- Left: Info Side --- */
+.quote-form__info {
+  padding-top: 16px;
+}
+
+.quote-form__title {
+  font-size: 2.25rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.quote-form__subtitle {
+  font-size: 1.1rem;
+  color: var(--text-light);
+  line-height: 1.7;
+  margin-bottom: 40px;
+}
+
+/* --- Contact List --- */
+.quote-form__contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.quote-form__contact-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.quote-form__contact-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  border-radius: var(--radius-md);
+  background: rgba(212, 167, 58, 0.1);
+  color: var(--primary);
+  transition: all var(--transition-normal);
+}
+
+.quote-form__contact-item:hover .quote-form__contact-icon {
+  background: var(--primary);
+  color: var(--dark);
+  box-shadow: var(--shadow-gold);
+}
+
+.quote-form__contact-text {
+  font-size: 1.05rem;
+  color: var(--text);
+  font-weight: 500;
+}
+
+/* --- Right: Form Card --- */
+.quote-form__card {
+  background: var(--light);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: 40px 36px;
+  border: 1px solid var(--light-border);
+}
+
+/* --- Form --- */
+.quote-form__form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* --- Field --- */
+.quote-form__field {
+  position: relative;
+}
+
+/* --- Input Icon --- */
+.quote-form__input-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-lighter);
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+  transition: color var(--transition-fast);
+  z-index: 1;
+}
+
+.quote-form__input-icon--textarea {
+  top: 18px;
+  transform: none;
+}
+
+/* --- Input / Textarea --- */
+.quote-form__input {
+  width: 100%;
+  padding: 14px 16px 14px 48px;
+  border: 1.5px solid var(--light-border);
+  border-radius: var(--radius-md);
+  font-size: 1rem;
+  color: var(--text);
+  background: var(--light);
+  outline: none;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.quote-form__input::placeholder {
+  color: var(--text-lighter);
+}
+
+.quote-form__input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(212, 167, 58, 0.15);
+}
+
+.quote-form__input:focus + .quote-form__input-icon,
+.quote-form__field:focus-within .quote-form__input-icon {
+  color: var(--primary);
+}
+
+.quote-form__textarea {
+  resize: vertical;
+  min-height: 110px;
+}
+
+/* --- Error State --- */
+.quote-form__field--error .quote-form__input {
+  border-color: #e74c3c;
+  box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
+}
+
+.quote-form__error {
+  display: block;
+  font-size: 0.813rem;
+  color: #e74c3c;
+  margin-top: 6px;
+  padding-left: 4px;
+}
+
+/* --- Success Message --- */
+.quote-form__success {
+  background: rgba(34, 197, 94, 0.08);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  color: #16a34a;
+  padding: 14px 18px;
+  border-radius: var(--radius-md);
+  font-size: 0.938rem;
+  font-weight: 500;
+  line-height: 1.5;
+  animation: quoteFormFadeIn 0.4s ease;
+}
+
+@keyframes quoteFormFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- Submit Button --- */
+.quote-form__submit {
+  width: 100%;
+  margin-top: 4px;
+  font-size: 1.05rem;
+  padding: 16px 32px;
+}
+
+/* --- Responsive --- */
+@media (max-width: 968px) {
+  .quote-form__grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .quote-form__info {
+    text-align: center;
+    padding-top: 0;
+  }
+
+  .quote-form__contact-list {
+    align-items: center;
+  }
+
+  .quote-form__title {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .quote-form__card {
+    padding: 28px 22px;
+  }
+
+  .quote-form__title {
+    font-size: 1.75rem;
+  }
+
+  .quote-form__subtitle {
+    font-size: 1rem;
+    margin-bottom: 28px;
+  }
+
+  .quote-form__contact-list {
+    gap: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .quote-form__card {
+    padding: 24px 16px;
+    border-radius: var(--radius-md);
+  }
+
+  .quote-form__input {
+    padding: 12px 14px 12px 44px;
+    font-size: 0.938rem;
+  }
+
+  .quote-form__contact-icon {
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+  }
+}

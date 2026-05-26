@@ -1,0 +1,277 @@
+/* ============================================
+   Navbar — Premium Glassmorphism Navigation
+   ============================================ */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  transition: all var(--transition-normal);
+}
+
+/* --- Scrolled State --- */
+.navbar.scrolled {
+  background: rgba(10, 14, 26, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(212, 167, 58, 0.15);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* --- Container --- */
+.navbar__container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 24px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* --- Logo --- */
+.navbar__logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  z-index: 1001;
+}
+
+.navbar__logo-icon {
+  width: 42px;
+  height: 42px;
+  background: var(--gold-gradient);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--dark);
+  flex-shrink: 0;
+  box-shadow: 0 2px 12px rgba(212, 167, 58, 0.3);
+}
+
+.navbar__logo-text {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--light);
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+
+.navbar__logo-text span {
+  background: var(--gold-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* --- Desktop Menu --- */
+.navbar__menu {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.navbar__link {
+  position: relative;
+  padding: 8px 18px;
+  font-size: 0.925rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.75);
+  transition: color var(--transition-fast);
+  letter-spacing: 0.01em;
+}
+
+.navbar__link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  width: calc(100% - 36px);
+  height: 2px;
+  background: var(--gold-gradient);
+  border-radius: var(--radius-full);
+  transition: transform var(--transition-normal);
+  transform-origin: center;
+}
+
+.navbar__link:hover,
+.navbar__link.active {
+  color: var(--light);
+}
+
+.navbar__link:hover::after,
+.navbar__link.active::after {
+  transform: translateX(-50%) scaleX(1);
+}
+
+.navbar__link.active {
+  color: var(--primary-light);
+}
+
+/* --- CTA Button in Navbar --- */
+.navbar__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 24px;
+  background: var(--gold-gradient);
+  color: var(--dark);
+  font-weight: 700;
+  font-size: 0.875rem;
+  border-radius: var(--radius-full);
+  margin-left: 16px;
+  transition: all var(--transition-normal);
+  box-shadow: 0 2px 12px rgba(212, 167, 58, 0.25);
+  white-space: nowrap;
+}
+
+.navbar__cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(212, 167, 58, 0.45);
+}
+
+/* --- Mobile Toggle --- */
+.navbar__toggle {
+  display: none;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  color: var(--light);
+  z-index: 1001;
+  border-radius: var(--radius-sm);
+  transition: background var(--transition-fast);
+}
+
+.navbar__toggle:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* --- Mobile Overlay --- */
+.navbar__mobile-overlay {
+  display: none;
+}
+
+/* ==========================================
+   Responsive — Mobile
+   ========================================== */
+@media (max-width: 968px) {
+  .navbar__menu {
+    display: none;
+  }
+
+  .navbar__cta {
+    display: none;
+  }
+
+  .navbar__toggle {
+    display: flex;
+  }
+
+  /* Mobile Overlay */
+  .navbar__mobile-overlay {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    max-width: 380px;
+    height: 100vh;
+    height: 100dvh;
+    background: rgba(10, 14, 26, 0.97);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    padding: 100px 40px 40px;
+    z-index: 999;
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    border-left: 1px solid rgba(212, 167, 58, 0.1);
+  }
+
+  .navbar__mobile-overlay.open {
+    transform: translateX(0);
+  }
+
+  .navbar__mobile-overlay .navbar__link {
+    display: block;
+    padding: 16px 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.7);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    transition: color var(--transition-fast), padding-left var(--transition-normal);
+  }
+
+  .navbar__mobile-overlay .navbar__link::after {
+    display: none;
+  }
+
+  .navbar__mobile-overlay .navbar__link:hover,
+  .navbar__mobile-overlay .navbar__link.active {
+    color: var(--primary-light);
+    padding-left: 12px;
+  }
+
+  .navbar__mobile-overlay .navbar__link.active {
+    border-bottom-color: rgba(212, 167, 58, 0.3);
+  }
+
+  .navbar__mobile-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 32px;
+    padding: 16px 32px;
+    background: var(--gold-gradient);
+    color: var(--dark);
+    font-weight: 700;
+    font-size: 1rem;
+    border-radius: var(--radius-full);
+    box-shadow: var(--shadow-gold);
+    transition: all var(--transition-normal);
+  }
+
+  .navbar__mobile-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 30px rgba(212, 167, 58, 0.5);
+  }
+
+  /* Backdrop scrim */
+  .navbar__backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--transition-normal), visibility var(--transition-normal);
+  }
+
+  .navbar__backdrop.visible {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar__logo-text {
+    font-size: 1.05rem;
+  }
+
+  .navbar__mobile-overlay {
+    max-width: 100%;
+  }
+}
