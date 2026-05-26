@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import WhyUs from './components/WhyUs';
@@ -28,7 +28,8 @@ function ScrollToTop() {
 
 // --- Trigger scroll animation hook for dynamic content ---
 function ScrollAnimationTrigger() {
-  useScrollAnimation();
+  const { pathname } = useLocation();
+  useScrollAnimation(pathname);
   return null;
 }
 
@@ -106,6 +107,9 @@ function App() {
               </div>
             } 
           />
+
+          {/* Wildcard Route - Redirect any invalid or unmatched routes to Kezdőlap */}
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>
 

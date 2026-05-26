@@ -83,8 +83,15 @@ body {
   font-size: 16px;
   line-height: 1.6;
   color: var(--text-on-dark);
-  background-color: var(--dark);
+  background-color: var(--dark, #0A0E1A);
+  background: #0A0E1A; /* Solid dark premium fallback */
   overflow-x: hidden;
+}
+
+#root {
+  min-height: 100vh;
+  background-color: #0A0E1A;
+  color: var(--text-on-dark);
 }
 
 a {
